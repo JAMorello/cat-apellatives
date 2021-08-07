@@ -1,13 +1,14 @@
-import Header from './components/Header'
-import Contenedor from './components/Contenedor'
+import Header from "./components/Header";
+import AppBody from "./components/AppBody";
+import { VStack } from "@chakra-ui/react";
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <VStack>
       <Header />
-      <Contenedor />
-    </div>
+      <AppBody />
+    </VStack>
   );
-}
+};
 
 export default App;
