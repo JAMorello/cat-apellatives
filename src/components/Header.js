@@ -4,8 +4,8 @@ import { GiCat } from "react-icons/gi";
 const Header = () => {
   return (
     <VStack p={2}>
-      <Heading size="2xl">
-        <Icon as={GiCat} size="2xl" color="gray.500" /> Apelativos Gatunos
+      <Heading fontSize={{ base: "3xl", md: "4xl" }}>
+        <Icon as={GiCat} color="gray.500" /> Apelativos Gatunos
       </Heading>
       <Divider />
     </VStack>
