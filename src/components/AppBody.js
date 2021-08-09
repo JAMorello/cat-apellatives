@@ -6,6 +6,7 @@ import {
   Text,
   Button,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import ModalAddWords from "./ModalAddWords";
 
@@ -73,8 +74,30 @@ const AppBody = () => {
     } else handleShowRandomApellative();
   };
 
+  const toast = useToast();
+
+  const notRepeated = (word) => {
+    if (palabra1.includes(word) || palabra2.includes(word)) {
+      toast({
+        title: "Atención",
+        description: "Las palabra ya está incluida en la app",
+        status: "warning",
+        variant: "solid",
+        duration: 4000,
+        isClosable: true,
+      });
+      return false;
+    }
+    return true;
+  };
+
   // For Modal use
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleAddToList = (word, list) => {
+    if (list === "1") setPalabra1([...palabra1, word]);
+    if (list === "2") setPalabra2([...palabra2, word]);
+  };
 
   return (
     <VStack>
@@ -106,8 +129,8 @@ const AppBody = () => {
       <ModalAddWords
         isOpen={isOpen}
         onClose={onClose}
-        setPalabra1={setPalabra1}
-        setPalabra2={setPalabra2}
+        notRepeated={notRepeated}
+        handleAddToList={handleAddToList}
       />
     </VStack>
   );
